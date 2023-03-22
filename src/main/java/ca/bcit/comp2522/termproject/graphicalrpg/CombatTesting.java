@@ -27,9 +27,7 @@ public class CombatTesting extends Application {
     public void start(Stage firstStage) throws Exception {
         // Link FXML to Scene
         Parent root = FXMLLoader.load(getClass().getResource(("Start.fxml")));
-        Parent rootCombat = FXMLLoader.load(getClass().getResource(("Combat.fxml")));
         Scene firstScene = new Scene(root, Color.BLACK);
-        Scene secondScene = new Scene(rootCombat, Color.BLACK);
 
         // Stage setup
         firstStage.setScene(firstScene);

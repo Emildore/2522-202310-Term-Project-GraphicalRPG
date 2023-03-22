@@ -64,15 +64,31 @@ public class CombatSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        enemyHealth = combat.getEnemy().getCurrHP();
-        enemyHealthBar.setProgress(enemyHealth);
+        if (this.enemyHealthBar != null) {
+            enemyHealth = combat.getEnemy().getCurrHP();
+            enemyHealthBar.setProgress(enemyHealth);
 
-        playerHealth = combat.getPlayer().getCurrHP();
-        playerHealthBar.setProgress(playerHealth);
+            playerHealth = combat.getPlayer().getCurrHP();
+            playerHealthBar.setProgress(playerHealth);
+        }
     }
 
     public void switchToStart(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource(("Start.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToCombat(ActionEvent event) throws IOException {
+        Combat combat = new Combat(new Player("Player"),
+                new Enemy("Enemy"));
+        System.out.println(combat.getPlayer().getCurrHP());
+        CombatSceneController.setEnemy(combat.getEnemy());
+        CombatSceneController.setPlayer(combat.getPlayer());
+        CombatSceneController.setCombat(combat);
+        root = FXMLLoader.load(getClass().getResource(("Combat.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
