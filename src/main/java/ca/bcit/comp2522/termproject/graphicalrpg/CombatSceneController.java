@@ -45,13 +45,14 @@ public class CombatSceneController implements Initializable {
     static public void setCombat(Combat nCombat) {
         combat = nCombat;
     }
-    public void atkBut (ActionEvent e) throws InterruptedException {
+    public void atkBut (ActionEvent e) throws InterruptedException, IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.playerATK();
             enemyHealth = combat.getEnemy().getCurrHP() / 100;
             enemyHealthBar.setProgress(enemyHealth);
             if (combat.checkEnemyHP()) {
                 combat.setWinner(player);
+                switchToStart(e);
             }
             combat.enemyATK();
             playerHealth = combat.getPlayer().getCurrHP() / 100;
