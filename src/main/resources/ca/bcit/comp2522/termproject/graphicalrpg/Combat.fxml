@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testing_suite.CombatSceneController">
+   <children>
+      <Separator layoutY="450.0" prefHeight="1.0" prefWidth="1200.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="71.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <ProgressBar fx:id="enemyHealthBar" layoutX="86.0" layoutY="96.0" prefHeight="14.0" prefWidth="274.0" progress="0.23" />
+      <Label layoutX="168.0" layoutY="42.0" text="Enemy" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="28.0" layoutY="480.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="80.0" prefWidth="160.0" text="Escape" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="616.0" layoutY="327.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <ProgressBar fx:id="playerHealthBar" layoutX="629.0" layoutY="393.0" prefHeight="14.0" prefWidth="274.0" progress="0.23" />
+      <Button layoutX="223.0" layoutY="480.0" mnemonicParsing="false" onAction="#atkBut" prefHeight="80.0" prefWidth="160.0" text="Attack" />
+      <Label layoutX="718.0" layoutY="339.0" text="Player" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="420.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 1" />
+      <Button layoutX="616.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 2" />
+      <Button layoutX="808.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 3" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="200.0" layoutY="239.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="580.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+   </children>
+</AnchorPane>
