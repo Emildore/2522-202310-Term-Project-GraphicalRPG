@@ -10,11 +10,6 @@ import javafx.stage.Stage;
 public class CombatTesting extends Application {
 
     public static void main(String[] args) {
-        // Initiate combat
-        Combat combat = new Combat(new Player("Player"),
-                new Enemy("Enemy"));
-        System.out.println(combat.getPlayer().getCurrHP());
-        CombatSceneController.setCombat(combat);
         launch(args);
 //        combat.initiateCombat();
     }

@@ -84,7 +84,6 @@ public class CombatSceneController implements Initializable {
         if (combat == null) {
             Combat combatSetter = new Combat(new Player("John"),
                     new Enemy("Enemy"));
-            System.out.println(combat.getPlayer().getCurrHP());
             CombatSceneController.setCombat(combatSetter);
             root = FXMLLoader.load(getClass().getResource(("Combat.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -94,7 +93,6 @@ public class CombatSceneController implements Initializable {
         } else {
             Combat newCombat = new Combat(combat.getPlayer(),
                     new Enemy("Enemy"));
-            System.out.println(combat.getPlayer().getCurrHP());
             CombatSceneController.setCombat(newCombat);
             root = FXMLLoader.load(getClass().getResource(("Combat.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
