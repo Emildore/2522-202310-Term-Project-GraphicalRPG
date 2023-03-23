@@ -37,7 +37,6 @@ public class Combat {
         }
         return false;
     }
-
     public void setWinner(Entity nWinner) {
         winner = nWinner;
         System.out.println("Winner: " + winner.getName());
@@ -89,11 +88,5 @@ public class Combat {
         return enemy;
     }
 
-    public static void main(String[] args) {
-        Combat combat = new Combat(new Player("Player"),
-                new Enemy("Enemy"));
-        System.out.println(combat.getPlayer().getCurrHP());
-        combat.initiateCombat();
-    }
 }
 

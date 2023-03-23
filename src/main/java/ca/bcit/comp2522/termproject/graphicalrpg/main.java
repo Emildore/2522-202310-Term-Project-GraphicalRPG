@@ -74,7 +74,11 @@ public class main extends Application {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                gamePanel.loop(gc, now);
+                try {
+                    gamePanel.loop(gc, now);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }.start();
     }

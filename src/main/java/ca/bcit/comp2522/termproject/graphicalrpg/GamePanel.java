@@ -3,6 +3,8 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
+
 import static ca.bcit.comp2522.termproject.graphicalrpg.main.*;
 
 public class GamePanel {
@@ -11,11 +13,13 @@ public class GamePanel {
     int thresholdX = 5;
     int thresholdY = 5;
 
+    boolean combatSceneCreated = false;
+
     public GamePanel(Player player) {
         this.player = player;
     }
 
-    public void loop(GraphicsContext gc, long now) {
+    public void loop(GraphicsContext gc, long now) throws IOException {
         if (lastTime == 0) {
             lastTime = now;
         }
@@ -25,8 +29,14 @@ public class GamePanel {
         draw(gc);
     }
 
-    private void update(double elapsedTime) {
-        player.update();
+    private void update(double elapsedTime) throws IOException {
+        if (player.getCurrHP() > 0) {
+            checkPlayerPosition();
+            player.update();
+            combatSceneCreated = false;
+        } else {
+            System.out.println("You died");
+        }
         if(checkPlayerPosition()) {
             System.out.println("Ooof");
             player.resetKeyPress();
@@ -42,7 +52,8 @@ public class GamePanel {
     }
 
     private boolean checkPlayerPosition() {
-        if (player.getX() >= thresholdX && player.getY() >= thresholdY) {
+        if (player.getX() >= (thresholdX - tileSize) && player.getX() <= (thresholdX + tileSize)
+                && player.getY() >= (thresholdY - tileSize) && player.getY() <= (thresholdY + tileSize)) {
             thresholdY += 10;
             thresholdX += 10;
             System.out.println("Bounds x: " + thresholdX);

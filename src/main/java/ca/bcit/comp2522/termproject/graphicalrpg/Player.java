@@ -11,10 +11,10 @@ public class Player extends Entity {
 
     public Player(String string) {
         super(string);
-        this.minX = 0;
-        this.maxX = screenWidth - tileSize;
-        this.minY = 0;
-        this.maxY = screenHeight - tileSize;
+        this.minX = tileSize;
+        this.maxX = screenWidth - 2*tileSize;
+        this.minY = tileSize;
+        this.maxY = screenHeight - 2*tileSize;
     }
 
     public void update() {
@@ -76,5 +76,13 @@ public class Player extends Entity {
 
     public int getY() {
         return posy;
+    }
+
+    public void setX(int x) {
+        this.posx = x;
+    }
+
+    public void setY(int y) {
+        this.posy = y;
     }
 }
