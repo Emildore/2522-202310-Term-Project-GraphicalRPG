@@ -5,6 +5,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.graphicalrpg.CombatSceneController">
    <children>
-      <Button fx:id="startBut" layoutX="481.0" layoutY="253.0" mnemonicParsing="false" onAction="#switchToCombat" prefHeight="100.0" prefWidth="100.0" text="Start" />
+      <Button fx:id="startBut" layoutX="481.0" layoutY="253.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Start" />
    </children>
 </AnchorPane>

@@ -47,6 +47,14 @@ public class Player extends Entity {
         }
     }
 
+    public void resetKeyPress() {
+        upPressed = false;
+        downPressed = false;
+        leftPressed = false;
+        rightPressed = false;
+    }
+
+
     public void handleKeyRelease(KeyCode code) {
         if (code == KeyCode.UP) {
             upPressed = false;

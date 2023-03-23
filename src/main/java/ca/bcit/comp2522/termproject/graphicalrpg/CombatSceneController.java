@@ -12,28 +12,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CombatSceneController implements Initializable {
-
     @FXML
     private ProgressBar enemyHealthBar;
-
     @FXML
     private ProgressBar playerHealthBar;
-
     private double enemyHealth;
     private double playerHealth;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     static Combat combat;
 
     static public void setCombat(Combat nCombat) {
         combat = nCombat;
     }
+
     public void atkBut (ActionEvent e) throws InterruptedException, IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.playerATK();
@@ -42,7 +36,9 @@ public class CombatSceneController implements Initializable {
                 combat.setWinner(combat.getPlayer());
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                switchToStart(e);
+                switchToStart();
+                playerHealthBar.setProgress(1.0);
+                enemyHealthBar.setProgress(1.0);
             }
             combat.enemyATK();
             updatePlayerHealthBar();
@@ -56,6 +52,7 @@ public class CombatSceneController implements Initializable {
         playerHealth = combat.getPlayer().getCurrHP() / 100;
         playerHealthBar.setProgress(playerHealth);
     }
+
     private void updateEnemyHealthBar() {
         enemyHealth = combat.getEnemy().getCurrHP() / 100;
         enemyHealthBar.setProgress(enemyHealth);
@@ -72,33 +69,7 @@ public class CombatSceneController implements Initializable {
         }
     }
 
-    public void switchToStart(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource(("Start.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToCombat(ActionEvent event) throws IOException {
-        if (combat == null) {
-            Combat combatSetter = new Combat(new Player("John"),
-                    new Enemy("Enemy"));
-            CombatSceneController.setCombat(combatSetter);
-            root = FXMLLoader.load(getClass().getResource(("Combat.fxml")));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } else {
-            Combat newCombat = new Combat(combat.getPlayer(),
-                    new Enemy("Enemy"));
-            CombatSceneController.setCombat(newCombat);
-            root = FXMLLoader.load(getClass().getResource(("Combat.fxml")));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
+    public void switchToStart() throws IOException {
+        main.mainStage.setScene(main.mapScene);
     }
 }
