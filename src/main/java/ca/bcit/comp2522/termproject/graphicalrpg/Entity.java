@@ -6,8 +6,8 @@ public abstract class Entity {
     private float currHP;
     private float baseATK;
     private float currATK;
-    private int posx;
-    private int posy;
+    int posx;
+    int posy;
 
     public Entity(String nName) {
         name = nName;
