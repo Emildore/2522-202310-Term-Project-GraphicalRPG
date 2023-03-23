@@ -8,6 +8,7 @@ public abstract class Entity {
     private float currATK;
     private int posx;
     private int posy;
+    private int enemyWins;
 
     public Entity(String nName) {
         name = nName;
@@ -17,6 +18,7 @@ public abstract class Entity {
         currATK = baseATK;
         posx = 0;
         posy = 0;
+        enemyWins = 0;
     }
 
     public float attack() {
@@ -29,6 +31,13 @@ public abstract class Entity {
 
     public float getCurrHP() {
         return currHP;
+    }
+    public void resetHP() {
+        currHP = baseHP;
+    }
+    public void haveWon() {
+        enemyWins++;
+        System.out.println(name + " has won " + enemyWins + " times.");
     }
 
     public String getName() {
