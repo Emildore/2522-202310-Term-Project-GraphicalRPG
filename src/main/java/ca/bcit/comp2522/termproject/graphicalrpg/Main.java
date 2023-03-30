@@ -27,6 +27,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
+        mainStage.setResizable(false);
+        mainStage.setTitle("Graphical RPG");
+        mainStage.sizeToScene();
         player = new Player("Player");
         Enemy enemy = new Enemy("Enemy"); // initialize enemy here
         Combat combat = new Combat(player, enemy); // initialize combat here

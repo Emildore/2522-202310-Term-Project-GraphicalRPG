@@ -4,10 +4,26 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane fx:id="mapPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.graphicalrpg.MapSceneController">
    <children>
-      <ImageView fx:id="playerSprite" fitHeight="52.0" fitWidth="60.0" layoutX="272.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="74.0" layoutY="454.0" stroke="BLACK" strokeType="INSIDE" width="247.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" layoutX="33.0" layoutY="281.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="142.0" layoutX="79.0" layoutY="313.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" layoutY="302.0" stroke="BLACK" strokeType="INSIDE" width="82.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="149.0" layoutX="382.0" layoutY="313.0" stroke="BLACK" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="110.0" layoutX="530.0" layoutY="353.0" stroke="BLACK" strokeType="INSIDE" width="103.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="244.0" layoutX="671.0" layoutY="284.0" stroke="BLACK" strokeType="INSIDE" width="29.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="225.0" layoutX="634.0" layoutY="303.0" stroke="BLACK" strokeType="INSIDE" width="37.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" layoutX="486.0" layoutY="459.0" stroke="BLACK" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="74.0" layoutX="423.0" layoutY="303.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
+      <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Map.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playerSprite" fitHeight="52.0" fitWidth="60.0" layoutX="286.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Player.png" />
          </image>

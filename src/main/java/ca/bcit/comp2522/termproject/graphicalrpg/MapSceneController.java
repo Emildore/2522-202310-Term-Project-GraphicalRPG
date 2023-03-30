@@ -2,6 +2,7 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -12,16 +13,23 @@ import java.util.ResourceBundle;
 public class MapSceneController implements Initializable {
 
     @FXML
-    private AnchorPane mapPane;
+    public static AnchorPane mapPane;
 
     @FXML
     private ImageView playerSprite;
 
+    @FXML
+    private Group mapGroup;
+
     private Player player;
 
     static Scene comScene;
-    private double thresholdX;
-    private double thresholdY;
+    private double thresholdRX;
+    private double thresholdRY;
+
+    private double thresholdLX;
+
+    private double thresholdLY;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,8 +38,11 @@ public class MapSceneController implements Initializable {
         updatePlayerSpritePosition();
 
         // Define the combat trigger area
-        thresholdX = 280;
-        thresholdY = 50;
+        thresholdRX = 360;
+        thresholdRY = -210;
+
+        thresholdLX = -290;
+        thresholdLY = -210;
     }
 
     public void updatePlayerSpritePosition() {
@@ -40,11 +51,17 @@ public class MapSceneController implements Initializable {
     }
 
     public void checkCombatTrigger() {
-        if (player.getX() >= (thresholdX - 10) && player.getX() <= (thresholdX + 10)
-                && player.getY() >= (thresholdY - 10) && player.getY() <= (thresholdY + 10)) {
+        if (player.getX() >= (thresholdRX - 10) && player.getX() <= (thresholdRX + 10)
+                && player.getY() >= (thresholdRY - 10) && player.getY() <= (thresholdRY + 10)) {
             System.out.println("Switching to combat scene");
             switchToCombat();
             player.setX(player.getX()-10);
+            player.setY(player.getY()-10);
+        } else if (player.getX() >= (thresholdLX - 10) && player.getX() <= (thresholdLX + 10)
+                && player.getY() >= (thresholdLY - 10) && player.getY() <= (thresholdLY + 10)) {
+            System.out.println("Switching to combat scene");
+            switchToCombat();
+            player.setX(player.getX()+10);
             player.setY(player.getY()-10);
         }
     }
@@ -62,6 +79,8 @@ public class MapSceneController implements Initializable {
     public static void setComScene(Scene nComScene) {
         comScene = nComScene;
     }
+
+
 
 }
 

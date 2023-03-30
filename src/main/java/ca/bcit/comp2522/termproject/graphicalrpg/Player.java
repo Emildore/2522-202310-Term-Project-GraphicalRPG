@@ -2,10 +2,10 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 
 public class Player extends Entity {
 
-    private final double minX = -280;
-    private final double maxX = 280;
-    private final double minY = -340;
-    private final double maxY = 50;
+    private double minX = -300;
+    private double maxX = 370;
+    private double minY = -300;
+    private double maxY = 60;
 
     private double posX;
     private double posY;
@@ -55,6 +55,22 @@ public class Player extends Entity {
     public void setY(double y) {
         posY = y;
     }
+
+    public void setMinX(double x) {
+        minX = x;
+    }
+
+    public void setMaxX(double x) {
+        maxX = x;
+    }
+
+    public void setMinY(double y) {
+        minY = y;
+    }
+
+    public void setMaxY(double y) {
+        maxY = y;
+    }
     public void attack(Entity enemy) {
         enemy.receiveDMG(super.attack());
     }
@@ -66,4 +82,5 @@ public class Player extends Entity {
     public void haveWon() {
         super.haveWon();
     }
+
 }
