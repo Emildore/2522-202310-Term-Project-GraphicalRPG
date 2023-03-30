@@ -48,6 +48,13 @@ public class Player extends Entity {
         return posY;
     }
 
+    public void setX(double x) {
+        posX = x;
+    }
+
+    public void setY(double y) {
+        posY = y;
+    }
     public void attack(Entity enemy) {
         enemy.receiveDMG(super.attack());
     }

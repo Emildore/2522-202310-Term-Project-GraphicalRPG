@@ -30,8 +30,8 @@ public class MapSceneController implements Initializable {
         updatePlayerSpritePosition();
 
         // Define the combat trigger area
-        thresholdX = 50;
-        thresholdY = 280;
+        thresholdX = 280;
+        thresholdY = 50;
     }
 
     public void updatePlayerSpritePosition() {
@@ -40,16 +40,23 @@ public class MapSceneController implements Initializable {
     }
 
     public void checkCombatTrigger() {
-        if (player.getX() >= (thresholdX - 225) && player.getX() <= (thresholdX + 225)
-                && player.getY() >= (thresholdY - 225) && player.getY() <= (thresholdY + 225)) {
+        if (player.getX() >= (thresholdX - 10) && player.getX() <= (thresholdX + 10)
+                && player.getY() >= (thresholdY - 10) && player.getY() <= (thresholdY + 10)) {
             System.out.println("Switching to combat scene");
             switchToCombat();
+            player.setX(player.getX()-10);
+            player.setY(player.getY()-10);
         }
     }
 
     private void switchToCombat() {
-
-       Main.getMainStage().setScene(comScene);
+        if (player.getEnemyWins() != 0) {
+            Combat combat = new Combat(player, new Enemy("Enemy"));
+            CombatSceneController.setCombat(combat);
+            Main.getMainStage().setScene(comScene);
+        } else {
+            Main.getMainStage().setScene(comScene);
+        }
     }
 
     public static void setComScene(Scene nComScene) {
