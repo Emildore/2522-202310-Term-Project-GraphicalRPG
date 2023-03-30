@@ -3,6 +3,7 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 
 
@@ -18,6 +19,7 @@ public class CombatSceneController implements Initializable {
     private double enemyHealth;
     private double playerHealth;
     static Combat combat;
+    static Scene mainScene;
 
     static public void setCombat(Combat nCombat) {
         combat = nCombat;
@@ -55,16 +57,22 @@ public class CombatSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (this.enemyHealthBar != null) {
+        if (this.enemyHealthBar != null && combat != null) {
             enemyHealth = combat.getEnemy().getCurrHP();
             enemyHealthBar.setProgress(enemyHealth);
 
             playerHealth = combat.getPlayer().getCurrHP();
             playerHealthBar.setProgress(playerHealth);
+        } else {
+            System.out.println("ERROR: Combat or enemyHealthBar is null in CombatSceneController initialize method.");
         }
     }
 
     public void switchToStart() throws IOException {
-        main.mainStage.setScene(main.mapScene);
+        Main.getMainStage().setScene(mainScene);
+    }
+
+    public static void setMainScene(Scene scene) {
+        mainScene = scene;
     }
 }

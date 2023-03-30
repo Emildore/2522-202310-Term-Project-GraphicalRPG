@@ -1,7 +1,5 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
-import static ca.bcit.comp2522.termproject.graphicalrpg.main.tileSize;
-
 public abstract class Entity {
     private String name;
     private float baseHP;
@@ -18,8 +16,8 @@ public abstract class Entity {
         currHP = baseHP;
         baseATK = 10;
         currATK = baseATK;
-        posx = 2*tileSize;
-        posy = 2*tileSize;
+        posx = 0;
+        posy = 0;
         enemyWins = 0;
     }
 
