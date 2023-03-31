@@ -1,80 +1,86 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
-import javafx.scene.input.KeyCode;
-
-import static ca.bcit.comp2522.termproject.graphicalrpg.main.*;
-
 public class Player extends Entity {
 
-    private boolean leftPressed, rightPressed, upPressed, downPressed;
-    private int minX, maxX, minY, maxY;
+    private double minX = -300;
+    private double maxX = 370;
+    private double minY = -300;
+    private double maxY = 60;
 
-    public Player(String string) {
-        super(string);
-        this.minX = 0;
-        this.maxX = screenWidth - tileSize;
-        this.minY = 0;
-        this.maxY = screenHeight - tileSize;
+    private double posX;
+    private double posY;
+
+    public Player(String name) {
+        super(name);
+        this.posX = 50;
+        this.posY = 50;
     }
 
-    public void update() {
-        if (leftPressed && posx > minX) {
-            posx -= 5;
-        }
-        if (rightPressed && posx < maxX) {
-            posx += 5;
-        }
-        if (upPressed && posy > minY) {
-            posy -= 5;
-        }
-        if (downPressed && posy < maxY) {
-            posy += 5;
+    public void moveUp() {
+        if (posY > minY) {
+            posY -= 10;
         }
     }
 
-    public void handleKeyPress(KeyCode code) {
-        if (code == KeyCode.UP) {
-            upPressed = true;
-        }
-        if (code == KeyCode.DOWN) {
-            downPressed = true;
-        }
-        if (code == KeyCode.LEFT) {
-            leftPressed = true;
-        }
-        if (code == KeyCode.RIGHT) {
-            rightPressed = true;
+    public void moveDown() {
+        if (posY < maxY) {
+            posY += 10;
         }
     }
 
-    public void resetKeyPress() {
-        upPressed = false;
-        downPressed = false;
-        leftPressed = false;
-        rightPressed = false;
-    }
-
-
-    public void handleKeyRelease(KeyCode code) {
-        if (code == KeyCode.UP) {
-            upPressed = false;
-        }
-        if (code == KeyCode.DOWN) {
-            downPressed = false;
-        }
-        if (code == KeyCode.LEFT) {
-            leftPressed = false;
-        }
-        if (code == KeyCode.RIGHT) {
-            rightPressed = false;
+    public void moveLeft() {
+        if (posX > minX) {
+            posX -= 10;
         }
     }
 
-    public int getX() {
-        return posx;
+    public void moveRight() {
+        if (posX < maxX) {
+            posX += 10;
+        }
     }
 
-    public int getY() {
-        return posy;
+    public double getX() {
+        return posX;
     }
+
+    public double getY() {
+        return posY;
+    }
+
+    public void setX(double x) {
+        posX = x;
+    }
+
+    public void setY(double y) {
+        posY = y;
+    }
+
+    public void setMinX(double x) {
+        minX = x;
+    }
+
+    public void setMaxX(double x) {
+        maxX = x;
+    }
+
+    public void setMinY(double y) {
+        minY = y;
+    }
+
+    public void setMaxY(double y) {
+        maxY = y;
+    }
+    public void attack(Entity enemy) {
+        enemy.receiveDMG(super.attack());
+    }
+
+    public void resetHP() {
+        super.resetHP();
+    }
+
+    public void haveWon() {
+        super.haveWon();
+    }
+
 }

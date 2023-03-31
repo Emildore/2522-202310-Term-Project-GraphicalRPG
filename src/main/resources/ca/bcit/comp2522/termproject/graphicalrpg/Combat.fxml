@@ -4,13 +4,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.graphicalrpg.CombatSceneController">
    <children>
+      <ImageView fitHeight="606.0" fitWidth="1000.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/BatlleBackground.png" />
+         </image>
+      </ImageView>
       <Separator layoutY="450.0" prefHeight="1.0" prefWidth="1200.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aac8e4" height="154.0" layoutX="-1.0" layoutY="450.0" stroke="BLACK" strokeType="INSIDE" width="1008.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aac8e4" height="109.0" layoutX="612.0" layoutY="322.0" stroke="BLACK" strokeType="INSIDE" width="309.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aac8e4" height="109.0" layoutX="68.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" width="309.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="71.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
       <ProgressBar fx:id="enemyHealthBar" layoutX="86.0" layoutY="96.0" prefHeight="14.0" prefWidth="274.0" progress="0.23" />
       <Label layoutX="168.0" layoutY="42.0" text="Enemy" textAlignment="CENTER">
@@ -30,7 +40,15 @@
       <Button layoutX="420.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 1" />
       <Button layoutX="616.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 2" />
       <Button layoutX="808.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 3" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="200.0" layoutY="239.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="580.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <ImageView fitHeight="166.0" fitWidth="213.0" layoutX="223.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/FightPlayer.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="219.0" fitWidth="206.0" layoutX="608.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/MRight.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
