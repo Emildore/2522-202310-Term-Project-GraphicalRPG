@@ -29,13 +29,18 @@ public class CombatSceneController implements Initializable {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.playerATK();
             updateEnemyHealthBar();
-            if (combat.checkEnemyHP()) {
-                combat.setWinner(combat.getPlayer());
+//            if (combat.checkEnemy()) {
+//                combat.setWinner(combat.getPlayer());
+//                combat.getPlayer().resetHP();
+//                combat.getPlayer().haveWon();
+//                switchToStart();
+//                resetHealthBars();
+//            }
+            if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
                 switchToStart();
-                playerHealthBar.setProgress(1.0);
-                enemyHealthBar.setProgress(1.0);
+                resetHealthBars();
             }
             combat.enemyATK();
             updatePlayerHealthBar();
@@ -53,6 +58,11 @@ public class CombatSceneController implements Initializable {
     private void updateEnemyHealthBar() {
         enemyHealth = combat.getEnemy().getCurrHP() / 100;
         enemyHealthBar.setProgress(enemyHealth);
+    }
+
+    public void resetHealthBars() {
+        playerHealthBar.setProgress(1.0);
+        enemyHealthBar.setProgress(1.0);
     }
 
     @Override

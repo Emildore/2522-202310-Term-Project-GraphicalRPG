@@ -24,6 +24,14 @@ public class Player extends Entity {
         super(name);
         this.posX = 50;
         this.posY = 50;
+
+        // Combat
+        win = false;
+        lose = false;
+        expThreshold = 50;
+        level = 1;
+        skills = new ArrayList<>();
+        skills.add("1");
     }
 
     public void moveUp() {
