@@ -37,6 +37,9 @@ public class MapSceneController implements Initializable {
 
     private double thresholdLY;
 
+    private double thresholdBX;
+    private double thresholdBY;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize the player object and save their initial position
@@ -50,6 +53,9 @@ public class MapSceneController implements Initializable {
 
         thresholdLX = -290;
         thresholdLY = -210;
+
+        thresholdBX = -90;
+        thresholdBY = -300;
     }
 
     public void updatePlayerSpritePosition() {
@@ -74,6 +80,12 @@ public class MapSceneController implements Initializable {
             switchToCombat();
             player.setX(player.getX()+10);
             player.setY(player.getY()-10);
+        } else if (player.getX() >= (thresholdBX - 10) && player.getX() <= (thresholdBX + 10)
+                && player.getY() >= (thresholdBY - 10) && player.getY() <= (thresholdBY + 10)) {
+            System.out.println("Switching to combat scene");
+            switchToBossCombat();
+            player.setX(player.getX()+10);
+            player.setY(player.getY()+10);
         }
     }
 
@@ -85,6 +97,12 @@ public class MapSceneController implements Initializable {
         } else {
             Main.getMainStage().setScene(comScene);
         }
+    }
+
+    private void switchToBossCombat() {
+        Combat combat = new Combat(player, new Boss("Boss"));
+        CombatSceneController.setCombat(combat);
+        Main.getMainStage().setScene(comScene);
     }
 
     public static void setComScene(Scene nComScene) {
