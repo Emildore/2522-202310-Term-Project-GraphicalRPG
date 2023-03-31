@@ -9,6 +9,7 @@ public abstract class Entity {
     int posx;
     int posy;
     private int enemyWins;
+    private int exp;
 
     public Entity(String nName) {
         name = nName;
@@ -46,5 +47,33 @@ public abstract class Entity {
 
     public int getEnemyWins() {
         return enemyWins;
+    }
+
+    public float getCurrATK() {
+        return currATK;
+    }
+
+    public float getBaseHP() {
+        return baseHP;
+    }
+
+    public void addCurrHP(float value) {
+        this.currHP += value;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public void setCurrATK(float currATK) {
+        this.currATK = currATK;
+    }
+
+    public void setCurrHP(float currHP) {
+        this.currHP = currHP;
     }
 }
