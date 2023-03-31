@@ -148,6 +148,8 @@ public class Player extends Entity {
             skills.add("2");
         } else if (this.level == 3) {
             skills.add("3");
+        } else if (this.level == 4) {
+            skills.add("4");
         }
     }
 
@@ -179,7 +181,15 @@ public class Player extends Entity {
         }
 
         if (selection.equals("3")) {
-            this.addCurrHP((float) block());
+            target.setCurrATK((float) (target.getCurrATK() * 0.9));
+        }
+
+        if (selection.equals("4")) {
+            if (this.getCurrHP() < this.getBaseHP()) {
+                this.setCurrHP((float) (this.getCurrHP() + (getBaseHP() * 0.2)));
+            } else {
+                this.setCurrHP(this.getBaseHP());
+            }
         }
     }
 

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 
 
@@ -16,6 +17,14 @@ public class CombatSceneController implements Initializable {
     private ProgressBar enemyHealthBar;
     @FXML
     private ProgressBar playerHealthBar;
+
+    @FXML
+    private Button PowerStrike;
+    @FXML
+    private Button Block;
+    @FXML
+    private Button Recover;
+
     private double enemyHealth;
     private double playerHealth;
     static Combat combat;
@@ -23,19 +32,74 @@ public class CombatSceneController implements Initializable {
 
     static public void setCombat(Combat nCombat) {
         combat = nCombat;
+
+    }
+
+    public void setButtons() {
+        PowerStrike.setDisable(!(combat.getPlayer().getSkills().contains("2")));
+        Block.setDisable(!(combat.getPlayer().getSkills().contains("3")));
+        Recover.setDisable(!(combat.getPlayer().getSkills().contains("4")));
     }
 
     public void atkBut (ActionEvent e) throws InterruptedException, IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
-            combat.playerATK();
+            combat.getPlayer().interact("1", combat.getEnemy());
             updateEnemyHealthBar();
-//            if (combat.checkEnemy()) {
-//                combat.setWinner(combat.getPlayer());
-//                combat.getPlayer().resetHP();
-//                combat.getPlayer().haveWon();
-//                switchToStart();
-//                resetHealthBars();
-//            }
+            if(combat.checkEnemyStatus()) {
+                combat.getPlayer().resetHP();
+                combat.getPlayer().haveWon();
+                switchToStart();
+                resetHealthBars();
+            }
+            combat.enemyATK();
+            updatePlayerHealthBar();
+            if (combat.checkPlayerHP()) {
+                combat.setWinner(combat.getEnemy());
+            }
+        }
+    }
+
+    public void powerBut (ActionEvent e) throws IOException {
+        if (combat.getEnemy() != null && combat.getPlayer() != null) {
+            combat.getPlayer().interact("2", combat.getEnemy());
+            updateEnemyHealthBar();
+            if(combat.checkEnemyStatus()) {
+                combat.getPlayer().resetHP();
+                combat.getPlayer().haveWon();
+                switchToStart();
+                resetHealthBars();
+            }
+            combat.enemyATK();
+            updatePlayerHealthBar();
+            if (combat.checkPlayerHP()) {
+                combat.setWinner(combat.getEnemy());
+            }
+        }
+    }
+
+
+    public void blockBut (ActionEvent e) throws IOException {
+        if (combat.getEnemy() != null && combat.getPlayer() != null) {
+            combat.getPlayer().interact("3", combat.getEnemy());
+            updateEnemyHealthBar();
+            if(combat.checkEnemyStatus()) {
+                combat.getPlayer().resetHP();
+                combat.getPlayer().haveWon();
+                switchToStart();
+                resetHealthBars();
+            }
+            combat.enemyATK();
+            updatePlayerHealthBar();
+            if (combat.checkPlayerHP()) {
+                combat.setWinner(combat.getEnemy());
+            }
+        }
+    }
+
+    public void recoverBut (ActionEvent e) throws IOException {
+        if (combat.getEnemy() != null && combat.getPlayer() != null) {
+            combat.getPlayer().interact("4", combat.getEnemy());
+            updateEnemyHealthBar();
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();

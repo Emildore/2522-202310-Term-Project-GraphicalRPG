@@ -16,6 +16,7 @@ public class Main extends Application {
     private static Stage mainStage;
     public static Scene mapScene;
     static Scene combatScene;
+    static FXMLLoader combatLoader;
 
     public Main() throws IOException {
     }
@@ -39,8 +40,9 @@ public class Main extends Application {
         FXMLLoader mapLoader = null;
         try {
             mapLoader = new FXMLLoader(getClass().getResource("Map.fxml"));
-            FXMLLoader combatLoader = new FXMLLoader(getClass().getResource("Combat.fxml"));
+            combatLoader = new FXMLLoader(getClass().getResource("Combat.fxml"));
             Parent mapRoot = mapLoader.load();
+
 
             // Set the mapPane as the root node of the mapScene
             mapScene = new Scene(mapRoot);
@@ -87,6 +89,8 @@ public class Main extends Application {
                 }
                 controller.updatePlayerSpritePosition();
                 controller.checkCombatTrigger();
+                CombatSceneController cControl = combatLoader.getController();
+                cControl.setButtons();
             }
         });
     }

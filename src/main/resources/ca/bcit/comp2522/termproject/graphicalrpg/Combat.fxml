@@ -37,9 +37,9 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="420.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 1" />
-      <Button layoutX="616.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 2" />
-      <Button layoutX="808.0" layoutY="480.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="160.0" text="Skill 3" />
+      <Button fx:id="PowerStrike" layoutX="420.0" layoutY="480.0" mnemonicParsing="false" onAction="#powerBut" prefHeight="80.0" prefWidth="160.0" text="Power Strike" />
+      <Button fx:id="Block" layoutX="616.0" layoutY="480.0" mnemonicParsing="false" onAction="#blockBut" prefHeight="80.0" prefWidth="160.0" text="Block" />
+      <Button fx:id="Recover" layoutX="808.0" layoutY="480.0" mnemonicParsing="false" onAction="#recoverBut" prefHeight="80.0" prefWidth="160.0" text="Recover" />
       <ImageView fitHeight="166.0" fitWidth="213.0" layoutX="223.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/FightPlayer.png" />
