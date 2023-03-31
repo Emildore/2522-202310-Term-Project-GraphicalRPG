@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.graphicalrpg.GameOver">
+   <children>
+      <ImageView fitHeight="458.0" fitWidth="986.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/GameOver.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="startBut" layoutX="415.0" layoutY="239.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="169.0" text="Restart">
+         <font>
+            <Font name="Comic Sans MS" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="startBut1" layoutX="415.0" layoutY="277.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="169.0" text="Exit">
+         <font>
+            <Font name="Comic Sans MS" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
