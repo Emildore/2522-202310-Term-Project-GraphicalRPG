@@ -21,6 +21,7 @@ public class Main extends Application {
     public static Scene gameOverScene;
     public static Scene winScene;
     static FXMLLoader combatLoader;
+    static FXMLLoader mapLoader;
 
     public Main() throws IOException {
     }
@@ -43,7 +44,6 @@ public class Main extends Application {
 //        setPlayer();
 
         // Load the FXML files for the map scene and combat scene
-        FXMLLoader mapLoader = null;
         FXMLLoader startLoader = null;
         FXMLLoader gameOverLoader = null;
         FXMLLoader winLoader = null;
@@ -131,14 +131,14 @@ public class Main extends Application {
     }
 
     public static void setPlayer() throws IOException {
-        Main.player = new Player("Player");
-        FXMLLoader mapLoader = null;
-        mapLoader = new FXMLLoader(Main.class.getResource("Map.fxml"));
-        Parent mapRoot = mapLoader.load();
-        mapScene = new Scene(mapRoot);
-        mapScene.setRoot(mapLoader.getRoot());
-        switchScene(mapScene);
-
+        Player newPlayer = new Player("Player");
+        Main.player = newPlayer;
+        MapSceneController controller = mapLoader.getController();
+        controller.setPlayer();
+        controller.updatePlayerSpritePosition();
+        Enemy enemy = new Enemy("Enemy"); // initialize enemy here
+        Combat combat = new Combat(player, enemy); // initialize combat here
+        CombatSceneController.setCombat(combat);
     }
 
     public static Scene getMapScene() {

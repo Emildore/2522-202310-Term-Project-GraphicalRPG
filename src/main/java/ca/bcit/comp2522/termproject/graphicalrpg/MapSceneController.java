@@ -41,6 +41,7 @@ public class MapSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize the player object and save their initial position
         player = Main.player;
+
         updatePlayerSpritePosition();
 
         // Define the combat trigger area
@@ -56,6 +57,10 @@ public class MapSceneController implements Initializable {
         playerSprite.setY(player.getY());
     }
 
+    public void setPlayer() {
+        player = Main.player;
+        updatePlayerSpritePosition();
+    }
     public void checkCombatTrigger() {
         if (player.getX() >= (thresholdRX - 10) && player.getX() <= (thresholdRX + 10)
                 && player.getY() >= (thresholdRY - 10) && player.getY() <= (thresholdRY + 10)) {

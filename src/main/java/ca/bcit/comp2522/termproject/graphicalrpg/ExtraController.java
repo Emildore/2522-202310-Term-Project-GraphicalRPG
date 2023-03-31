@@ -20,7 +20,6 @@ public class ExtraController {
     private Button restartButton;
     @FXML
     public void startButton() throws IOException {
-        Main.setPlayer();
         Main.switchScene(Main.mapScene);
     }
     @FXML
