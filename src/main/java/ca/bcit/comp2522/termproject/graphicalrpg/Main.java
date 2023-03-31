@@ -14,8 +14,12 @@ public class Main extends Application {
 
     public static Player player;
     private static Stage mainStage;
+
+    public static Scene startScene;
     public static Scene mapScene;
-    static Scene combatScene;
+    public static Scene combatScene;
+    public static Scene gameOverScene;
+    public static Scene winScene;
     static FXMLLoader combatLoader;
 
     public Main() throws IOException {
@@ -31,26 +35,44 @@ public class Main extends Application {
         mainStage.setResizable(false);
         mainStage.setTitle("Graphical RPG");
         mainStage.sizeToScene();
+
         player = new Player("Player");
         Enemy enemy = new Enemy("Enemy"); // initialize enemy here
         Combat combat = new Combat(player, enemy); // initialize combat here
         CombatSceneController.setCombat(combat);
+//        setPlayer();
 
         // Load the FXML files for the map scene and combat scene
         FXMLLoader mapLoader = null;
+        FXMLLoader startLoader = null;
+        FXMLLoader gameOverLoader = null;
+        FXMLLoader winLoader = null;
         try {
+            startLoader = new FXMLLoader(getClass().getResource("Start.fxml"));
             mapLoader = new FXMLLoader(getClass().getResource("Map.fxml"));
             combatLoader = new FXMLLoader(getClass().getResource("Combat.fxml"));
+            gameOverLoader = new FXMLLoader(getClass().getResource("GameOver.fxml"));
+            winLoader = new FXMLLoader(getClass().getResource("Win.fxml"));
+
+            Parent startRoot = startLoader.load();
             Parent mapRoot = mapLoader.load();
-
-
-            // Set the mapPane as the root node of the mapScene
-            mapScene = new Scene(mapRoot);
-            mapScene.setRoot(mapLoader.getRoot());
-            mainStage.setScene(mapScene);
-
             Parent combatRoot = combatLoader.load();
+            Parent gameOverRoot = gameOverLoader.load();
+            Parent winRoot = winLoader.load();
+
+            startScene = new Scene(startRoot);
+            mapScene = new Scene(mapRoot);
             combatScene = new Scene(combatRoot);
+            gameOverScene = new Scene(gameOverRoot);
+            winScene = new Scene(winRoot);
+
+            startScene.setRoot(startLoader.getRoot());
+            mapScene.setRoot(mapLoader.getRoot());
+            combatScene.setRoot(combatLoader.getRoot());
+            gameOverScene.setRoot(gameOverLoader.getRoot());
+            winScene.setRoot(winLoader.getRoot());
+            mainStage.setScene(startScene);
+
             CombatSceneController.setMainScene(mapScene);
             MapSceneController.setComScene(combatScene);
         } catch (IOException e) {
@@ -106,6 +128,17 @@ public class Main extends Application {
 
     public static Stage getMainStage() {
         return mainStage;
+    }
+
+    public static void setPlayer() throws IOException {
+        Main.player = new Player("Player");
+        FXMLLoader mapLoader = null;
+        mapLoader = new FXMLLoader(Main.class.getResource("Map.fxml"));
+        Parent mapRoot = mapLoader.load();
+        mapScene = new Scene(mapRoot);
+        mapScene.setRoot(mapLoader.getRoot());
+        switchScene(mapScene);
+
     }
 
     public static Scene getMapScene() {

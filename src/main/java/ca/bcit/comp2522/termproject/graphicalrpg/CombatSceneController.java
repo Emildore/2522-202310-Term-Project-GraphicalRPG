@@ -55,6 +55,7 @@ public class CombatSceneController implements Initializable {
             updatePlayerHealthBar();
             if (combat.checkPlayerHP()) {
                 combat.setWinner(combat.getEnemy());
+                Main.switchScene(Main.gameOverScene);
             }
         }
     }
@@ -73,6 +74,7 @@ public class CombatSceneController implements Initializable {
             updatePlayerHealthBar();
             if (combat.checkPlayerHP()) {
                 combat.setWinner(combat.getEnemy());
+                Main.switchScene(Main.gameOverScene);
             }
         }
     }
@@ -92,6 +94,7 @@ public class CombatSceneController implements Initializable {
             updatePlayerHealthBar();
             if (combat.checkPlayerHP()) {
                 combat.setWinner(combat.getEnemy());
+                Main.switchScene(Main.gameOverScene);
             }
         }
     }
@@ -110,6 +113,7 @@ public class CombatSceneController implements Initializable {
             updatePlayerHealthBar();
             if (combat.checkPlayerHP()) {
                 combat.setWinner(combat.getEnemy());
+                Main.switchScene(Main.gameOverScene);
             }
         }
     }

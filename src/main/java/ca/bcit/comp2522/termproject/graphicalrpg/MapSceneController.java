@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -20,6 +21,11 @@ public class MapSceneController implements Initializable {
 
     @FXML
     private Group mapGroup;
+    @FXML
+    private Button exitButton;
+
+    @FXML
+    private Button saveButton;
 
     private Player player;
 
@@ -80,7 +86,10 @@ public class MapSceneController implements Initializable {
         comScene = nComScene;
     }
 
-
+    @FXML
+    public void exitMap() {
+        System.exit(0);
+    }
 
 }
 
