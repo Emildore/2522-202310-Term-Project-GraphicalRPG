@@ -16,7 +16,6 @@ public class Player extends Entity {
     private int expThreshold;
     private Entity target;
     private ArrayList<String> skills;
-
     private double posX;
     private double posY;
 
@@ -32,6 +31,7 @@ public class Player extends Entity {
         level = 1;
         skills = new ArrayList<>();
         skills.add("1");
+
     }
 
     public void moveUp() {

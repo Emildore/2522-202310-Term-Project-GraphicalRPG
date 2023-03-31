@@ -48,8 +48,12 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                switchToStart();
-                resetHealthBars();
+                if (combat.getPlayer().getEnemyWins() >= 3) {
+                    Main.switchScene(Main.winScene);
+                } else {
+                    switchToStart();
+                    resetHealthBars();
+                }
             }
             combat.enemyATK();
             updatePlayerHealthBar();
@@ -69,8 +73,12 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                switchToStart();
-                resetHealthBars();
+                if (combat.getPlayer().getEnemyWins() >= 3) {
+                    Main.switchScene(Main.winScene);
+                } else {
+                    switchToStart();
+                    resetHealthBars();
+                }
             }
             combat.enemyATK();
             updatePlayerHealthBar();
@@ -91,9 +99,13 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                switchToStart();
-                resetHealthBars();
-                resetHealthBars();
+                if (combat.getPlayer().getEnemyWins() >= 3) {
+                    Main.switchScene(Main.winScene);
+                } else {
+                    switchToStart();
+                    resetHealthBars();
+//                resetHealthBars();
+                }
             }
             combat.enemyATK();
             updatePlayerHealthBar();
@@ -113,8 +125,12 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                switchToStart();
-                resetHealthBars();
+                if (combat.getPlayer().getEnemyWins() >= 3) {
+                    Main.switchScene(Main.winScene);
+                } else {
+                    switchToStart();
+                    resetHealthBars();
+                }
             }
             combat.enemyATK();
             updatePlayerHealthBar();
