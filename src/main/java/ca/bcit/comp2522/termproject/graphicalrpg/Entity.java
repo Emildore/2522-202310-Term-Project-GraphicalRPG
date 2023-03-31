@@ -68,4 +68,12 @@ public abstract class Entity {
     public void setExp(int exp) {
         this.exp = exp;
     }
+
+    public void setCurrATK(float currATK) {
+        this.currATK = currATK;
+    }
+
+    public void setCurrHP(float currHP) {
+        this.currHP = currHP;
+    }
 }
