@@ -19,7 +19,7 @@
          </viewport>
       </ImageView>
       <Rectangle accessibleRole="BUTTON" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#374655" height="75.0" layoutX="505.0" layoutY="484.0" stroke="#0e655b" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeMiterLimit="40.0" strokeWidth="5.0" width="256.0" />
-      <Button accessibleRole="NODE" focusTraversable="false" layoutX="537.0" layoutY="508.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Save">
+      <Button accessibleRole="NODE" focusTraversable="false" layoutX="537.0" layoutY="508.0" mnemonicParsing="false" onAction="#save" prefHeight="27.0" prefWidth="75.0" text="Save">
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font>

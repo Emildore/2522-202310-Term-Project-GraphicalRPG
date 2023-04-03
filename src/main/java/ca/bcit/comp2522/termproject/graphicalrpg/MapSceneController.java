@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.*;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -112,6 +114,18 @@ public class MapSceneController implements Initializable {
     @FXML
     public void exitMap() {
         System.exit(0);
+    }
+
+
+    // SAVING
+    public void save() throws IOException {
+        FileOutputStream fileOut = new FileOutputStream("src\\main\\java\\ca\\bcit\\comp2522" +
+                "\\termproject\\graphicalrpg\\playerInfo.ser");
+        ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+        objOut.writeObject(player);
+        objOut.close();
+        fileOut.close();
+        System.out.println("Saved");
     }
 
 }

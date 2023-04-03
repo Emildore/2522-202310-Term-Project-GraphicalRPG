@@ -1,8 +1,9 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Player extends Entity {
+public class Player extends Entity implements Serializable {
 
     private double minX = -300;
     private double maxX = 370;
