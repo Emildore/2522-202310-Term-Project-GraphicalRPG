@@ -1,6 +1,8 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
-public abstract class Entity {
+import java.io.Serializable;
+
+public abstract class Entity implements Serializable {
     private String name;
     private float baseHP;
     private float currHP;
