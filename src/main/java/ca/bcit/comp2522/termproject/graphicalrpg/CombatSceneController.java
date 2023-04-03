@@ -48,7 +48,7 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                if (combat.getPlayer().getEnemyWins() >= 3) {
+                if (combat.getPlayer().getWin()) {
                     Main.switchScene(Main.winScene);
                 } else {
                     switchToStart();
@@ -73,7 +73,7 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                if (combat.getPlayer().getEnemyWins() >= 3) {
+                if (combat.getPlayer().getWin()) {
                     Main.switchScene(Main.winScene);
                 } else {
                     switchToStart();
@@ -99,7 +99,7 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                if (combat.getPlayer().getEnemyWins() >= 3) {
+                if (combat.getPlayer().getWin()) {
                     Main.switchScene(Main.winScene);
                 } else {
                     switchToStart();
@@ -125,7 +125,7 @@ public class CombatSceneController implements Initializable {
             if(combat.checkEnemyStatus()) {
                 combat.getPlayer().resetHP();
                 combat.getPlayer().haveWon();
-                if (combat.getPlayer().getEnemyWins() >= 3) {
+                if (combat.getPlayer().getWin()) {
                     Main.switchScene(Main.winScene);
                 } else {
                     switchToStart();

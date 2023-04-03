@@ -70,19 +70,19 @@ public class MapSceneController implements Initializable {
     public void checkCombatTrigger() {
         if (player.getX() >= (thresholdRX - 10) && player.getX() <= (thresholdRX + 10)
                 && player.getY() >= (thresholdRY - 10) && player.getY() <= (thresholdRY + 10)) {
-            System.out.println("Switching to combat scene");
+            System.out.println("Switching to combat scene\nMinion Fight");
             switchToCombat();
             player.setX(player.getX()-10);
             player.setY(player.getY()-10);
         } else if (player.getX() >= (thresholdLX - 10) && player.getX() <= (thresholdLX + 10)
                 && player.getY() >= (thresholdLY - 10) && player.getY() <= (thresholdLY + 10)) {
-            System.out.println("Switching to combat scene");
+            System.out.println("Switching to combat scene\nMinion Fight");
             switchToCombat();
             player.setX(player.getX()+10);
             player.setY(player.getY()-10);
         } else if (player.getX() >= (thresholdBX - 10) && player.getX() <= (thresholdBX + 10)
                 && player.getY() >= (thresholdBY - 10) && player.getY() <= (thresholdBY + 10)) {
-            System.out.println("Switching to combat scene");
+            System.out.println("Switching to combat scene\nBoss Fight");
             switchToBossCombat();
             player.setX(player.getX()+10);
             player.setY(player.getY()+10);
