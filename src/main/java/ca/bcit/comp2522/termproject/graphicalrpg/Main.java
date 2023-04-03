@@ -149,4 +149,17 @@ public class Main extends Application {
         return combatScene;
     }
 
+    public static void loadPlayer(Player lPlayer) {
+        Main.player = lPlayer;
+        MapSceneController controller = mapLoader.getController();
+        controller.setPlayer();
+        controller.updatePlayerSpritePosition();
+        Enemy enemy = new Enemy("Enemy"); // initialize enemy here
+        Combat combat = new Combat(player, enemy); // initialize combat here
+        CombatSceneController.setCombat(combat);
+        System.out.println("Loaded");
+        System.out.println("Switching Scenes");
+        Main.switchScene(Main.mapScene);
+    }
+
 }

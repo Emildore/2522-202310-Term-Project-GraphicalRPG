@@ -17,7 +17,7 @@
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font></Button>
-      <Button fx:id="loadButton" disable="true" focusTraversable="false" layoutX="415.0" layoutY="256.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="169.0" text="Load">
+      <Button fx:id="loadButton" focusTraversable="false" layoutX="415.0" layoutY="256.0" mnemonicParsing="false" onAction="#load" prefHeight="27.0" prefWidth="169.0" text="Load">
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font>

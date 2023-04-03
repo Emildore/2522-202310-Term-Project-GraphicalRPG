@@ -22,6 +22,8 @@ public abstract class Entity {
         enemyWins = 0;
     }
 
+    public Entity() {};
+
     public float attack() {
         return currATK;
     }
