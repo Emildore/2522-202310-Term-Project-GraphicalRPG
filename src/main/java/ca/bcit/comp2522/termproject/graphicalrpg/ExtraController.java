@@ -3,10 +3,7 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 public class ExtraController {
     @FXML
@@ -21,6 +18,7 @@ public class ExtraController {
 
     @FXML
     private Button restartButton;
+    public boolean loadExists = false;
 
     @FXML
     public void startButton() throws IOException {
@@ -48,5 +46,15 @@ public class ExtraController {
         fileIn.close();
 
         Main.loadPlayer(loadedPlayer);
+    }
+
+    public void setLoadButton() {
+        File file = new File("src\\main\\java\\ca\\bcit\\comp2522" +
+                "\\termproject\\graphicalrpg\\playerInfo.ser");
+        if (file.exists()) {
+            loadButton.setDisable(false);
+        } else {
+            loadButton.setDisable(true);
+        }
     }
 }

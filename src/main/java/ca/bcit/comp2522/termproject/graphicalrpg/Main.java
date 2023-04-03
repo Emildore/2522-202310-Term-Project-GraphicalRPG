@@ -71,6 +71,13 @@ public class Main extends Application {
             combatScene.setRoot(combatLoader.getRoot());
             gameOverScene.setRoot(gameOverLoader.getRoot());
             winScene.setRoot(winLoader.getRoot());
+
+
+            // CHECK IF FILE EXISTS FOR LOADING
+            ExtraController setLoadCont = startLoader.getController();
+            setLoadCont.setLoadButton();
+
+
             mainStage.setScene(startScene);
 
             CombatSceneController.setMainScene(mapScene);
