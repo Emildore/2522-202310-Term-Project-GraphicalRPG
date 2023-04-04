@@ -1,4 +1,7 @@
 # Graphical RPG
+### Made By
+Emily Tran A00990221  
+Sean Sollestre A01333807
 ### Summary
 A turn-based RPG developed in Java as a school assignment.
 
@@ -23,7 +26,7 @@ Week 4 (March 26, 2023):
     - Health Bars
     - Attacks
     - Player and Enemy interactions
-Map with:
+- Map with:
     - A player represented on the screen
     - Visual elements on the map
     - Character movement based on input
