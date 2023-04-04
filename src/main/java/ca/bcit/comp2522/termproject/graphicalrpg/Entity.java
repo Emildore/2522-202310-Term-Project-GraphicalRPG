@@ -8,8 +8,8 @@ public abstract class Entity implements Serializable {
     private float currHP;
     private float baseATK;
     private float currATK;
-    int posx;
-    int posy;
+    private int posx;
+    private int posy;
     private int enemyWins;
     private int exp;
 
@@ -23,8 +23,6 @@ public abstract class Entity implements Serializable {
         posy = 0;
         enemyWins = 0;
     }
-
-    public Entity() {};
 
     public float attack() {
         return currATK;
@@ -59,10 +57,6 @@ public abstract class Entity implements Serializable {
 
     public float getBaseHP() {
         return baseHP;
-    }
-
-    public void addCurrHP(float value) {
-        this.currHP += value;
     }
 
     public int getExp() {

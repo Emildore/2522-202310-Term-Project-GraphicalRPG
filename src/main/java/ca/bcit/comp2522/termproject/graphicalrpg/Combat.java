@@ -1,7 +1,5 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
-import java.util.Scanner;
-
 public class Combat {
     private int turn;
     private Player player;
@@ -16,27 +14,12 @@ public class Combat {
         System.out.println("Scenario created");
     }
 
-    public void playerATK () {
-        if (enemy != null && player != null) {
-            enemy.receiveDMG(player.attack());
-            System.out.println("Enemy: " + enemy.getCurrHP());
-        }
-    }
-
     public void enemyATK () {
         if (enemy != null && player != null) {
             player.receiveDMG(enemy.attack());
             System.out.println("player: " + player.getCurrHP());
         }
     }
-
-//    public boolean checkEnemyHP() {
-//        if (!(enemy.getCurrHP() > 0)) {
-//            System.out.println("Enemy has been defeated");
-//            return true;
-//        }
-//        return false;
-//    }
 
     public boolean checkEnemyStatus () {
         if (!(enemy.getCurrHP() > 0)) {
@@ -70,32 +53,6 @@ public class Combat {
             return true;
         }
         return false;
-    }
-
-
-    public void initiateCombat() {
-        while (player.getCurrHP() > 0 && enemy.getCurrHP() > 0) {
-
-            // User input
-            System.out.println("Moves:\n"
-                    + "1: Attack");
-            Scanner input = new Scanner(System.in);
-            if (input.nextLine().equals("1")) {
-                // Player Turn
-                playerATK();
-                if (!(enemy.getCurrHP() > 0)) {
-                    System.out.println("Enemy has been defeated");
-                    break;
-                }
-            }
-            // Enemy Turn
-            player.receiveDMG(enemy.attack());
-            System.out.println("Player: " + player.getCurrHP());
-            if (!(player.getCurrHP() > 0)) {
-                System.out.println("Player has been defeated");
-                break;
-            }
-        }
     }
 
     public Player getPlayer() {

@@ -2,7 +2,6 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -16,22 +15,18 @@ import java.util.ResourceBundle;
 public class MapSceneController implements Initializable {
 
     @FXML
-    public static AnchorPane mapPane;
+    private static AnchorPane mapPane;
+
+    private static Scene comScene;
 
     @FXML
     private ImageView playerSprite;
 
     @FXML
-    private Group mapGroup;
-    @FXML
     private Button exitButton;
-
-    @FXML
-    private Button saveButton;
 
     private Player player;
 
-    static Scene comScene;
     private double thresholdRX;
     private double thresholdRY;
 
@@ -119,14 +114,12 @@ public class MapSceneController implements Initializable {
 
     // SAVING
     public void save() throws IOException {
-        FileOutputStream fileOut = new FileOutputStream("src\\main\\java\\ca\\bcit\\comp2522" +
-                "\\termproject\\graphicalrpg\\playerInfo.ser");
+        FileOutputStream fileOut = new FileOutputStream("src\\main\\java\\ca\\bcit\\comp2522"
+                + "\\termproject\\graphicalrpg\\playerInfo.ser");
         ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
         objOut.writeObject(player);
         objOut.close();
         fileOut.close();
         System.out.println("Saved");
     }
-
 }
-

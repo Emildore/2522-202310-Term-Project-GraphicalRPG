@@ -44,50 +44,14 @@ public class CombatSceneController implements Initializable {
     public void atkBut (ActionEvent e) throws InterruptedException, IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("1", combat.getEnemy());
-            updateEnemyHealthBar();
-            if(combat.checkEnemyStatus()) {
-                combat.getPlayer().resetHP();
-                combat.getPlayer().haveWon();
-                if (combat.getPlayer().getWin()) {
-                    Main.switchScene(Main.winScene);
-                } else {
-                    switchToStart();
-                    resetHealthBars();
-                }
-            }
-            combat.enemyATK();
-            updatePlayerHealthBar();
-            if (combat.checkPlayerHP()) {
-                combat.setWinner(combat.getEnemy());
-                Main.switchScene(Main.gameOverScene);
-                Main.setPlayer();
-                resetHealthBars();
-            }
+            combatOutcome();
         }
     }
 
     public void powerBut (ActionEvent e) throws IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("2", combat.getEnemy());
-            updateEnemyHealthBar();
-            if(combat.checkEnemyStatus()) {
-                combat.getPlayer().resetHP();
-                combat.getPlayer().haveWon();
-                if (combat.getPlayer().getWin()) {
-                    Main.switchScene(Main.winScene);
-                } else {
-                    switchToStart();
-                    resetHealthBars();
-                }
-            }
-            combat.enemyATK();
-            updatePlayerHealthBar();
-            if (combat.checkPlayerHP()) {
-                combat.setWinner(combat.getEnemy());
-                Main.switchScene(Main.gameOverScene);
-                Main.setPlayer();
-                resetHealthBars();
-            }
+            combatOutcome();
         }
     }
 
@@ -95,51 +59,36 @@ public class CombatSceneController implements Initializable {
     public void blockBut (ActionEvent e) throws IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("3", combat.getEnemy());
-            updateEnemyHealthBar();
-            if(combat.checkEnemyStatus()) {
-                combat.getPlayer().resetHP();
-                combat.getPlayer().haveWon();
-                if (combat.getPlayer().getWin()) {
-                    Main.switchScene(Main.winScene);
-                } else {
-                    switchToStart();
-                    resetHealthBars();
-//                resetHealthBars();
-                }
-            }
-            combat.enemyATK();
-            updatePlayerHealthBar();
-            if (combat.checkPlayerHP()) {
-                combat.setWinner(combat.getEnemy());
-                Main.switchScene(Main.gameOverScene);
-                Main.setPlayer();
-                resetHealthBars();
-            }
+            combatOutcome();
         }
     }
 
     public void recoverBut (ActionEvent e) throws IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("4", combat.getEnemy());
-            updateEnemyHealthBar();
-            if(combat.checkEnemyStatus()) {
-                combat.getPlayer().resetHP();
-                combat.getPlayer().haveWon();
-                if (combat.getPlayer().getWin()) {
-                    Main.switchScene(Main.winScene);
-                } else {
-                    switchToStart();
-                    resetHealthBars();
-                }
-            }
-            combat.enemyATK();
-            updatePlayerHealthBar();
-            if (combat.checkPlayerHP()) {
-                combat.setWinner(combat.getEnemy());
-                Main.switchScene(Main.gameOverScene);
-                Main.setPlayer();
+            combatOutcome();
+        }
+    }
+
+    private void combatOutcome() throws IOException {
+        updateEnemyHealthBar();
+        if(combat.checkEnemyStatus()) {
+            combat.getPlayer().resetHP();
+            combat.getPlayer().haveWon();
+            if (combat.getPlayer().getWin()) {
+                Main.switchScene(Main.winScene);
+            } else {
+                switchToStart();
                 resetHealthBars();
             }
+        }
+        combat.enemyATK();
+        updatePlayerHealthBar();
+        if (combat.checkPlayerHP()) {
+            combat.setWinner(combat.getEnemy());
+            Main.switchScene(Main.gameOverScene);
+            Main.setPlayer();
+            resetHealthBars();
         }
     }
 

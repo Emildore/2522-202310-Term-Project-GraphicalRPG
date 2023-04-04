@@ -1,26 +1,70 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Player class. Represents a player entity in the game.
+ *
+ * @author Emily & Sean
+ * @version 2023/04/09
+ */
 public class Player extends Entity {
-
+    /**
+     * The minimum x coordinate of the player.
+     */
     private double minX = -300;
+    /**
+     * The maximum x coordinate of the player.
+     */
     private double maxX = 370;
+    /**
+     * The minimum y coordinate of the player.
+     */
     private double minY = -300;
+    /**
+     * The maximum y coordinate of the player.
+     */
     private double maxY = 60;
-
+    /**
+     * The current x coordinate of the player.
+     */
+    private double posX;
+    /**
+     * The current y coordinate of the player.
+     */
+    private double posY;
+    /**
+     * The player's level.
+     */
     // Combat
     private int level;
+    /**
+     * Whether the player has won the battle.
+     */
     private boolean win;
-    private boolean lose;
-    private int expThreshold;
+    /**
+     * Whether the player has lost the battle.
+     */
+    private final boolean lose;
+    /**
+     * The experience threshold for the player to level up.
+     */
+    private final int expThreshold;
+    /**
+     * The target of the player.
+     */
     private Entity target;
-    private ArrayList<String> skills;
-    private double posX;
-    private double posY;
+    /**
+     * The player's skills.
+     */
+    private final ArrayList<String> skills;
 
-    public Player(String name) {
+    /**
+     * Constructs an object of type Player.
+     * @param name the string name of the player
+     */
+
+    public Player(final String name) {
         super(name);
         this.posX = 50;
         this.posY = 50;
@@ -35,114 +79,140 @@ public class Player extends Entity {
 
     }
 
+    /**
+     * Moves the player up.
+     */
     public void moveUp() {
         if (posY > minY) {
             posY -= 10;
         }
     }
 
+    /**
+     * Moves the player down.
+     */
     public void moveDown() {
         if (posY < maxY) {
             posY += 10;
         }
     }
 
+    /**
+     * Moves the player left.
+     */
     public void moveLeft() {
         if (posX > minX) {
             posX -= 10;
         }
     }
 
+    /**
+     * Moves the player right.
+     */
     public void moveRight() {
         if (posX < maxX) {
             posX += 10;
         }
     }
 
+    /**
+     * Gets the player's x coordinate.
+     * @return the player's x coordinate
+     */
     public double getX() {
         return posX;
     }
 
+    /**
+     * Gets the player's y coordinate.
+     * @return the player's y coordinate
+     */
     public double getY() {
         return posY;
     }
 
+    /**
+     * Sets the player's x coordinate.
+     * @param x the player's x coordinate
+     */
     public void setX(double x) {
         posX = x;
     }
 
+    /**
+     * Sets the player's y coordinate.
+     * @param y the player's y coordinate
+     */
     public void setY(double y) {
         posY = y;
     }
 
-    public void setMinX(double x) {
-        minX = x;
-    }
-
-    public void setMaxX(double x) {
-        maxX = x;
-    }
-
-    public void setMinY(double y) {
-        minY = y;
-    }
-
-    public void setMaxY(double y) {
-        maxY = y;
-    }
-    public void attack(Entity enemy) {
-        enemy.receiveDMG(super.attack());
-    }
-
+    /**
+     * Resets the player's HP.
+     */
     public void resetHP() {
         super.resetHP();
     }
 
+    /**
+     * Increases the player's win count.
+     */
     public void haveWon() {
         super.haveWon();
     }
 
+    /**
+     * Sets the player's win status.
+     * @param win the player's win status
+     */
     public void setWin(boolean win) {
         this.win = win;
     }
 
-    public void setLose(boolean lose) {
-        this.lose = lose;
-    }
-
+    /**
+     * Gets the player's level.
+     * @return
+     */
     public int getLevel() {
         return level;
     }
 
+    /**
+     * Gets the player's win status.
+     * @return the player's win status
+     */
     public boolean getWin() {
         return win;
     }
 
-    public boolean getLose() {
-        return lose;
-    }
-
+    /**
+     *
+     * @return
+     */
     @Override
     public float attack() {
         return this.getCurrATK();
     }
 
+    /**
+     *
+     * @return
+     */
     public float doubleAttack() {
         return this.attack() * 2;
     }
 
-    public double block() {
-        return this.getBaseHP() * 0.5;
-    }
-
+    /**
+     * Gets the player's experience threshold.
+     * @return the player's experience threshold
+     */
     public int getExpThreshold() {
         return expThreshold;
     }
 
-    public void setExpThreshold(int expThreshold) {
-        this.expThreshold = expThreshold;
-    }
-
+    /**
+     *
+     */
     public void levelUp() {
         this.level += 1;
         if (this.level == 2) {
@@ -154,20 +224,12 @@ public class Player extends Entity {
         }
     }
 
-    public void displaySkills() {
-        System.out.println("***\nMoves");
-        if (this.getLevel() >= 1) {
-            System.out.println("1: Attack");
-        }
-        if (this.getLevel() >= 2) {
-            System.out.println("2: Power Strike");
-        }
-        if (this.getLevel() >= 3) {
-            System.out.println("3: Block");
-        }
-    }
-
-    public void interact(String selection, Entity nTarget) {
+    /**
+     *
+     * @param selection
+     * @param nTarget
+     */
+    public void interact(final String selection, final Entity nTarget) {
         if (selection.equals("1")) {
             target = nTarget;
             if (target != null) {
@@ -194,7 +256,9 @@ public class Player extends Entity {
         }
     }
 
-
+    /**
+     * Checks if the player has leveled up.
+     */
     public void checkLevelUp() {
         if (this.getExp() >= this.getExpThreshold()) {
             this.levelUp();
@@ -208,6 +272,10 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getSkills() {
         return skills;
     }

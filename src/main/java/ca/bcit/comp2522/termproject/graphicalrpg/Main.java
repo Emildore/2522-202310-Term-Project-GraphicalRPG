@@ -23,9 +23,6 @@ public class Main extends Application {
     static FXMLLoader combatLoader;
     static FXMLLoader mapLoader;
 
-    public Main() throws IOException {
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -40,8 +37,9 @@ public class Main extends Application {
         player = new Player("Player");
         Enemy enemy = new Enemy("Enemy"); // initialize enemy here
         Combat combat = new Combat(player, enemy); // initialize combat here
+
+
         CombatSceneController.setCombat(combat);
-//        setPlayer();
 
         // Load the FXML files for the map scene and combat scene
         FXMLLoader startLoader = null;
@@ -89,6 +87,8 @@ public class Main extends Application {
         mainStage.show();
 
         MapSceneController controller = mapLoader.getController();
+
+
         mapScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -148,14 +148,6 @@ public class Main extends Application {
         CombatSceneController.setCombat(combat);
     }
 
-    public static Scene getMapScene() {
-        return mapScene;
-    }
-
-    public static Scene getCombatScene() {
-        return combatScene;
-    }
-
     public static void loadPlayer(Player lPlayer) {
         Main.player = lPlayer;
         MapSceneController controller = mapLoader.getController();
@@ -168,5 +160,7 @@ public class Main extends Application {
         System.out.println("Switching Scenes");
         Main.switchScene(Main.mapScene);
     }
+
+
 
 }
