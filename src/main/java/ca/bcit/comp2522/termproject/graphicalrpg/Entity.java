@@ -98,6 +98,10 @@ public abstract class Entity implements Serializable {
         this.currATK = currATK;
     }
 
+    public void setBaseHP(float baseHP) {
+        this.baseHP = baseHP;
+    }
+
     public void setCurrHP(float currHP) {
         this.currHP = currHP;
     }

@@ -95,12 +95,12 @@ public class CombatSceneController implements Initializable {
     }
 
     private void updatePlayerHealthBar() {
-        playerHealth = combat.getPlayer().getCurrHP() / 100;
+        playerHealth = combat.getPlayer().getCurrHP() / combat.getPlayer().getBaseHP();
         playerHealthBar.setProgress(playerHealth);
     }
 
     private void updateEnemyHealthBar() {
-        enemyHealth = combat.getEnemy().getCurrHP() / 100;
+        enemyHealth = combat.getEnemy().getCurrHP() / combat.getEnemy().getBaseHP();
         enemyHealthBar.setProgress(enemyHealth);
     }
 

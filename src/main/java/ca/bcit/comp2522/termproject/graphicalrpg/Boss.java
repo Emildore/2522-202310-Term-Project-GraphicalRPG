@@ -14,6 +14,7 @@ public class Boss extends Enemy {
     public Boss(String nName) {
         super(nName, 150);
         this.setCurrATK(this.getCurrATK() * 3);
-        this.setCurrHP(this.getCurrHP() * 2);
+        this.setBaseHP(this.getCurrHP() * 2);
+        this.setCurrHP(this.getBaseHP());
     }
 }
