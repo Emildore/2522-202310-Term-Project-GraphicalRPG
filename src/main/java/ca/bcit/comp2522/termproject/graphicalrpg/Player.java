@@ -244,12 +244,14 @@ public class Player extends Entity {
         }
 
         if (selection.equals("3")) {
-            target.setCurrATK((float) (target.getCurrATK() * 0.9));
+            target = nTarget;
+            target.setCurrATK((float) (target.getCurrATK() * 0.8));
+            System.out.println("atk: " + target.getCurrATK());
         }
 
         if (selection.equals("4")) {
             if (this.getCurrHP() < this.getBaseHP()) {
-                this.setCurrHP((float) (this.getCurrHP() + (getBaseHP() * 0.2)));
+                this.setCurrHP((float) (this.getCurrHP() + (getBaseHP() * 0.3)));
             } else {
                 this.setCurrHP(this.getBaseHP());
             }

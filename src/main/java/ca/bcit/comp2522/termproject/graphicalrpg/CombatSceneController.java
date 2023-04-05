@@ -77,10 +77,12 @@ public class CombatSceneController implements Initializable {
             combat.getPlayer().haveWon();
             if (combat.getPlayer().getWin()) {
                 Main.switchScene(Main.winScene);
+                Main.setPlayer();
             } else {
                 switchToStart();
-                resetHealthBars();
             }
+            resetHealthBars();
+            return;
         }
         combat.enemyATK();
         updatePlayerHealthBar();
