@@ -8,21 +8,13 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
  */
 public class Combat {
     /**
-     * The turn number.
-     */
-    private int turn;
-    /**
      * The player.
      */
-    private Player player;
+    private final Player player;
     /**
      * The enemy.
      */
     private Enemy enemy;
-    /**
-     * The winner of the combat.
-     */
-    private Entity winner;
 
     /**
      * Constructor for objects of class Combat.
@@ -31,7 +23,6 @@ public class Combat {
      */
     public Combat(Player nPlayer,
                   Enemy nEnemy) {
-        turn = 0;
         player = nPlayer;
         enemy = nEnemy;
         System.out.println("Combat created");
@@ -48,8 +39,8 @@ public class Combat {
     }
 
     /**
-     *
-     * @return
+     * Check if the enemy has been defeated.
+     * @return true if the enemy health goes below zero
      */
     public boolean checkEnemyStatus () {
         if (!(enemy.getCurrHP() > 0)) {
@@ -70,12 +61,14 @@ public class Combat {
 
     /**
      *
-     * @param nWinner
+     * @param nWinner the winning entity
      */
     public void setWinner(Entity nWinner) {
-        winner = nWinner;
-        System.out.println("Winner: " + winner.getName());
-        if (winner.getName().equals(player.getName())) {
+        /**
+         * The winner of the combat.
+         */
+        System.out.println("Winner: " + nWinner.getName());
+        if (nWinner.getName().equals(player.getName())) {
             enemy = null;
         }
 
