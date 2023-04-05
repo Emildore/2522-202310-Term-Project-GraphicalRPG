@@ -11,7 +11,7 @@ public class Boss extends Enemy {
      * Constructor for objects of class Boss.
      * @param nName the name of the boss
      */
-    public Boss(String nName) {
+    public Boss(final String nName) {
         super(nName, 150);
         this.setCurrATK(this.getCurrATK() * 3);
         this.setBaseHP(this.getCurrHP() * 2);

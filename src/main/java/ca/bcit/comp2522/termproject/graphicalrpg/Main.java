@@ -7,14 +7,23 @@ import javafx.scene.Parent;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-
 import java.io.IOException;
 
+/**
+ * Main. This is the main class for the Graphical RPG.
+ *
+ * @author Emily & Sean
+ * @version 2023/04/09
+ */
 public class Main extends Application {
-
+    /**
+     * The player.
+     */
     public static Player player;
+    /**
+     * The main stage.
+     */
     private static Stage mainStage;
-
     public static Scene startScene;
     public static Scene mapScene;
     public static Scene combatScene;

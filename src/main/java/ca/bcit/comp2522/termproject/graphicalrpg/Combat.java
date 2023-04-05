@@ -21,8 +21,8 @@ public class Combat {
      * @param nPlayer the player
      * @param nEnemy the enemy
      */
-    public Combat(Player nPlayer,
-                  Enemy nEnemy) {
+    public Combat(final Player nPlayer,
+                  final Enemy nEnemy) {
         player = nPlayer;
         enemy = nEnemy;
         System.out.println("Combat created");
@@ -31,7 +31,7 @@ public class Combat {
     /**
      * Enemy attacks the player.
      */
-    public void enemyATK () {
+    public void enemyATK ( ) {
         if (enemy != null && player != null) {
             player.receiveDMG(enemy.attack());
             System.out.println("player: " + player.getCurrHP());
@@ -42,7 +42,7 @@ public class Combat {
      * Check if the enemy has been defeated.
      * @return true if the enemy health goes below zero
      */
-    public boolean checkEnemyStatus () {
+    public boolean checkEnemyStatus ( ) {
         if (!(enemy.getCurrHP() > 0)) {
             if (enemy.getClass().equals(Boss.class)) {
                 player.setWin(true);
@@ -60,23 +60,19 @@ public class Combat {
     }
 
     /**
-     *
+     * Set the winner of the combat.
      * @param nWinner the winning entity
      */
-    public void setWinner(Entity nWinner) {
-        /**
-         * The winner of the combat.
-         */
+    public void setWinner(final Entity nWinner) {
         System.out.println("Winner: " + nWinner.getName());
         if (nWinner.getName().equals(player.getName())) {
             enemy = null;
         }
-
     }
 
     /**
-     *
-     * @return
+     * Checks if the player has been defeated.
+     * @return true if the player health goes below zero
      */
     public boolean checkPlayerHP() {
         if (!(player.getCurrHP() > 0)) {
@@ -87,20 +83,18 @@ public class Combat {
     }
 
     /**
-     *
-     * @return
+     * Gets the player of this combat.
+     * @return the player
      */
     public Player getPlayer() {
         return player;
     }
 
     /**
-     *
-     * @return
+     * Gets the enemy of this combat.
+     * @return the enemy
      */
     public Enemy getEnemy() {
         return enemy;
     }
-
 }
-

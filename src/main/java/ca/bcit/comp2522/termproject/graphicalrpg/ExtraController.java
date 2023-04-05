@@ -2,8 +2,11 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
-import java.io.*;
 
 public class ExtraController {
     @FXML

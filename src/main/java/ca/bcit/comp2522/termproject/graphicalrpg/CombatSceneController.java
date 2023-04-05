@@ -72,7 +72,7 @@ public class CombatSceneController implements Initializable {
 
     private void combatOutcome() throws IOException {
         updateEnemyHealthBar();
-        if(combat.checkEnemyStatus()) {
+        if (combat.checkEnemyStatus()) {
             combat.getPlayer().resetHP();
             combat.getPlayer().haveWon();
             if (combat.getPlayer().getWin()) {

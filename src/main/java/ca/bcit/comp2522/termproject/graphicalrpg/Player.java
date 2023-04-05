@@ -10,50 +10,17 @@ import java.util.ArrayList;
  */
 public class Player extends Entity {
     /**
-     * The minimum x coordinate of the player.
-     */
-    private double minX = -300;
-    /**
-     * The maximum x coordinate of the player.
-     */
-    private double maxX = 370;
-    /**
-     * The minimum y coordinate of the player.
-     */
-    private double minY = -300;
-    /**
-     * The maximum y coordinate of the player.
-     */
-    private double maxY = 60;
-    /**
-     * The current x coordinate of the player.
-     */
-    private double posX;
-    /**
-     * The current y coordinate of the player.
-     */
-    private double posY;
-    /**
      * The player's level.
      */
-    // Combat
     private int level;
     /**
      * Whether the player has won the battle.
      */
     private boolean win;
     /**
-     * Whether the player has lost the battle.
-     */
-    private final boolean lose;
-    /**
      * The experience threshold for the player to level up.
      */
     private final int expThreshold;
-    /**
-     * The target of the player.
-     */
-    private Entity target;
     /**
      * The player's skills.
      */
@@ -71,7 +38,6 @@ public class Player extends Entity {
 
         // Combat
         win = false;
-        lose = false;
         expThreshold = 50;
         level = 1;
         skills = new ArrayList<>();
@@ -83,6 +49,7 @@ public class Player extends Entity {
      * Moves the player up.
      */
     public void moveUp() {
+        double minY = -300;
         if (posY > minY) {
             posY -= 10;
         }
@@ -92,6 +59,7 @@ public class Player extends Entity {
      * Moves the player down.
      */
     public void moveDown() {
+        double maxY = 60;
         if (posY < maxY) {
             posY += 10;
         }
@@ -101,6 +69,7 @@ public class Player extends Entity {
      * Moves the player left.
      */
     public void moveLeft() {
+        double minX = -300;
         if (posX > minX) {
             posX -= 10;
         }
@@ -110,6 +79,7 @@ public class Player extends Entity {
      * Moves the player right.
      */
     public void moveRight() {
+        double maxX = 370;
         if (posX < maxX) {
             posX += 10;
         }
@@ -135,7 +105,7 @@ public class Player extends Entity {
      * Sets the player's x coordinate.
      * @param x the player's x coordinate
      */
-    public void setX(double x) {
+    public void setX(final double x) {
         posX = x;
     }
 
@@ -143,7 +113,7 @@ public class Player extends Entity {
      * Sets the player's y coordinate.
      * @param y the player's y coordinate
      */
-    public void setY(double y) {
+    public void setY(final double y) {
         posY = y;
     }
 
@@ -165,7 +135,7 @@ public class Player extends Entity {
      * Sets the player's win status.
      * @param win the player's win status
      */
-    public void setWin(boolean win) {
+    public void setWin(final boolean win) {
         this.win = win;
     }
 
@@ -230,6 +200,7 @@ public class Player extends Entity {
      * @param nTarget the player's target
      */
     public void interact(final String selection, final Entity nTarget) {
+        Entity target;
         if (selection.equals("1")) {
             target = nTarget;
             if (target != null) {
@@ -273,7 +244,6 @@ public class Player extends Entity {
             }
         }
     }
-
     /**
      * Gets the player's skills.
      * @return ArrayList of the player's skills
