@@ -6,70 +6,129 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * CombatSceneController. This is the controller for the combat scene.
+ *
+ * @author Emily & Sean
+ * @version 2023/04/09
+ */
 public class CombatSceneController implements Initializable {
+    /**
+     * The combat.
+     */
+    static Combat combat;
+    /**
+     * The main scene.
+     */
+    static Scene mainScene;
+    /**
+     * The enemy health bar.
+     */
     @FXML
     private ProgressBar enemyHealthBar;
+    /**
+     * The player health bar.
+     */
     @FXML
     private ProgressBar playerHealthBar;
-
+    /**
+     * The Power Strike button.
+     */
     @FXML
-    private Button PowerStrike;
+    private Button powerStrike;
+    /**
+     * The Block button.
+     */
     @FXML
-    private Button Block;
+    private Button block;
+    /**
+     * The Recover button.
+     */
     @FXML
-    private Button Recover;
-
+    private Button recover;
+    /**
+     * The enemy health.
+     */
     private double enemyHealth;
+    /**
+     * The player health.
+     */
     private double playerHealth;
-    static Combat combat;
-    static Scene mainScene;
 
-    static public void setCombat(Combat nCombat) {
+    /**
+     * Sets combat.
+     * @param nCombat the combat
+     */
+    static public void setCombat(final Combat nCombat) {
         combat = nCombat;
-
     }
 
+    /**
+     * Sets buttons to be disabled if the player does not have the skill.
+     */
     public void setButtons() {
-        PowerStrike.setDisable(!(combat.getPlayer().getSkills().contains("2")));
-        Block.setDisable(!(combat.getPlayer().getSkills().contains("3")));
-        Recover.setDisable(!(combat.getPlayer().getSkills().contains("4")));
+        powerStrike.setDisable(!(combat.getPlayer().getSkills().contains("2")));
+        block.setDisable(!(combat.getPlayer().getSkills().contains("3")));
+        recover.setDisable(!(combat.getPlayer().getSkills().contains("4")));
     }
 
-    public void atkBut (ActionEvent e) throws InterruptedException, IOException {
+    /**
+     * Player attack interaction.
+     * @param e the action event
+     * @throws InterruptedException the interrupted exception
+     * @throws IOException the io exception
+     */
+    public void atkBut(final ActionEvent e) throws InterruptedException, IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("1", combat.getEnemy());
             combatOutcome();
         }
     }
 
-    public void powerBut (ActionEvent e) throws IOException {
+    /**
+     * Player power strike interaction.
+     * @param e the action event
+     * @throws IOException the io exception
+     */
+    public void powerBut(final ActionEvent e) throws IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("2", combat.getEnemy());
             combatOutcome();
         }
     }
 
-
-    public void blockBut (ActionEvent e) throws IOException {
+    /**
+     * Player block interaction.
+     * @param e the action event
+     * @throws IOException the io exception
+     */
+    public void blockBut(final ActionEvent e) throws IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("3", combat.getEnemy());
             combatOutcome();
         }
     }
 
-    public void recoverBut (ActionEvent e) throws IOException {
+    /**
+     * Player recover interaction.
+     * @param e the action event
+     * @throws IOException the io exception
+     */
+    public void recoverBut(final ActionEvent e) throws IOException {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("4", combat.getEnemy());
             combatOutcome();
         }
     }
 
+    /**
+     * Combat outcome.
+     * @throws IOException the io exception
+     */
     private void combatOutcome() throws IOException {
         updateEnemyHealthBar();
         if (combat.checkEnemyStatus()) {
@@ -94,23 +153,37 @@ public class CombatSceneController implements Initializable {
         }
     }
 
+    /**
+     * Updates the player health bar.
+     */
     private void updatePlayerHealthBar() {
         playerHealth = combat.getPlayer().getCurrHP() / combat.getPlayer().getBaseHP();
         playerHealthBar.setProgress(playerHealth);
     }
 
+    /**
+     * Updates the enemy health bar.
+     */
     private void updateEnemyHealthBar() {
         enemyHealth = combat.getEnemy().getCurrHP() / combat.getEnemy().getBaseHP();
         enemyHealthBar.setProgress(enemyHealth);
     }
 
+    /**
+     * Resets the health bars.
+     */
     public void resetHealthBars() {
         playerHealthBar.setProgress(1.0);
         enemyHealthBar.setProgress(1.0);
     }
 
+    /**
+     * Initializes the controller class.
+     * @param url the url
+     * @param resourceBundle the resource bundle
+     */
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(final URL url, final ResourceBundle resourceBundle) {
         if (this.enemyHealthBar != null && combat != null) {
             enemyHealth = combat.getEnemy().getCurrHP();
             enemyHealthBar.setProgress(enemyHealth);
@@ -122,11 +195,18 @@ public class CombatSceneController implements Initializable {
         }
     }
 
-    public void switchToStart() throws IOException {
+    /**
+     * Switches to the start scene.
+     */
+    public void switchToStart() {
         Main.getMainStage().setScene(mainScene);
     }
 
-    public static void setMainScene(Scene scene) {
+    /**
+     * Sets the main scene.
+     * @param scene the scene
+     */
+    public static void setMainScene(final Scene scene) {
         mainScene = scene;
     }
 }

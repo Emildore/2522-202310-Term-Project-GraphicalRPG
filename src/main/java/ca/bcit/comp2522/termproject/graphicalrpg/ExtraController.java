@@ -7,33 +7,49 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-
+/**
+ * ExtraController. This class is the controller for the buttons.
+ *
+ * @author Emily & Sean
+ * @version 2023/04/09
+ */
 public class ExtraController {
-    @FXML
-    private Button startButton;
+
+    /**
+     * The load game button.
+     */
     @FXML
     private Button loadButton;
-    @FXML
-    private Button exitButton;
-    @FXML
-    private Button restartButton;
 
+    /**
+     * Starts a new game.
+     */
     @FXML
-    public void startButton() throws IOException {
+    public void startButton() {
         Main.switchScene(Main.mapScene);
     }
 
+    /**
+     * Exits the game.
+     */
     @FXML
     public void exitButton() {
         System.exit(0);
     }
 
+    /**
+     * Restarts the game by loading the start scene.
+     */
     @FXML
     public void restartButton() {
         Main.switchScene(Main.startScene);
     }
 
-    // LOAD
+    /**
+     * Loads the game.
+     * @throws IOException if the file is not found
+     * @throws ClassNotFoundException if the class is not found
+     */
     public void load() throws IOException, ClassNotFoundException {
         System.out.println("Loading");
         FileInputStream fileIn = new FileInputStream("src\\main\\java\\ca\\bcit\\comp2522"
@@ -46,13 +62,12 @@ public class ExtraController {
         Main.loadPlayer(loadedPlayer);
     }
 
+    /**
+     * Sets the load button to be disabled if there is no save file.
+     */
     public void setLoadButton() {
         File file = new File("src\\main\\java\\ca\\bcit\\comp2522"
                 + "\\termproject\\graphicalrpg\\playerInfo.ser");
-        if (file.exists()) {
-            loadButton.setDisable(false);
-        } else {
-            loadButton.setDisable(true);
-        }
+        loadButton.setDisable(!file.exists());
     }
 }
