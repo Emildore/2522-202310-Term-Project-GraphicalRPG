@@ -95,23 +95,15 @@ public class Main extends Application {
                 switch (event.getCode()) {
                     case UP:
                         player.moveUp();
-                        System.out.println("player x" + player.getX());
-                        System.out.println("player y" + player.getY());
                         break;
                     case DOWN:
                         player.moveDown();
-                        System.out.println("player x" + player.getX());
-                        System.out.println("player y" + player.getY());
                         break;
                     case LEFT:
                         player.moveLeft();
-                        System.out.println("player x" + player.getX());
-                        System.out.println("player y" + player.getY());
                         break;
                     case RIGHT:
                         player.moveRight();
-                        System.out.println("player x" + player.getX());
-                        System.out.println("player y" + player.getY());
                         break;
                     default:
                         break;

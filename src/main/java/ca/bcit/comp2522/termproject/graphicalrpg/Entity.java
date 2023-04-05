@@ -2,14 +2,41 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 
 import java.io.Serializable;
 
+/**
+ * Entity. Represents an entity in the game.
+ *
+ * @author Emily & Sean
+ * @version 2023/04/09
+ */
 public abstract class Entity implements Serializable {
+    /**
+     * The name of the entity.
+     */
     private String name;
+    /**
+     * The base HP of the entity.
+     */
     private float baseHP;
+    /**
+     * The current HP of the entity.
+     */
     private float currHP;
+    /**
+     * The base ATK of the entity.
+     */
     private float baseATK;
+    /**
+     * The current ATK of the entity.
+     */
     private float currATK;
-    private int posx;
-    private int posy;
+    /**
+     * The x coordinate of the entity.
+     */
+    double posX;
+    /**
+     * The y coordinate of the entity.
+     */
+    double posY;
     private int enemyWins;
     private int exp;
 
@@ -19,8 +46,8 @@ public abstract class Entity implements Serializable {
         currHP = baseHP;
         baseATK = 10;
         currATK = baseATK;
-        posx = 0;
-        posy = 0;
+        posX = 0;
+        posY = 0;
         enemyWins = 0;
     }
 

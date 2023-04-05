@@ -3,7 +3,7 @@ package ca.bcit.comp2522.termproject.graphicalrpg;
 import java.util.ArrayList;
 
 /**
- * Player class. Represents a player entity in the game.
+ * Player. Represents a player entity in the game.
  *
  * @author Emily & Sean
  * @version 2023/04/09
@@ -171,7 +171,7 @@ public class Player extends Entity {
 
     /**
      * Gets the player's level.
-     * @return
+     * @return the player's level
      */
     public int getLevel() {
         return level;
@@ -186,8 +186,8 @@ public class Player extends Entity {
     }
 
     /**
-     *
-     * @return
+     * Attack.
+     * @return the player's current attack
      */
     @Override
     public float attack() {
@@ -195,8 +195,8 @@ public class Player extends Entity {
     }
 
     /**
-     *
-     * @return
+     * Doubles the player's attack.
+     * @return the player's attack
      */
     public float doubleAttack() {
         return this.attack() * 2;
@@ -211,7 +211,7 @@ public class Player extends Entity {
     }
 
     /**
-     *
+     * Unlocks the player's skills.
      */
     public void levelUp() {
         this.level += 1;
@@ -225,9 +225,9 @@ public class Player extends Entity {
     }
 
     /**
-     *
-     * @param selection
-     * @param nTarget
+     * Determines the player's action.
+     * @param selection the player's selection
+     * @param nTarget the player's target
      */
     public void interact(final String selection, final Entity nTarget) {
         if (selection.equals("1")) {
@@ -273,8 +273,8 @@ public class Player extends Entity {
     }
 
     /**
-     *
-     * @return
+     * Gets the player's skills.
+     * @return ArrayList of the player's skills
      */
     public ArrayList<String> getSkills() {
         return skills;
