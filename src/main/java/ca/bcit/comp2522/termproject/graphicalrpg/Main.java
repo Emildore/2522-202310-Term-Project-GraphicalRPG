@@ -24,20 +24,48 @@ public class Main extends Application {
      * The main stage.
      */
     private static Stage mainStage;
+    /**
+     * The start scene.
+     */
     public static Scene startScene;
+    /**
+     * The map scene.
+     */
     public static Scene mapScene;
+    /**
+     * The combat scene.
+     */
     public static Scene combatScene;
+    /**
+     * The game over scene.
+     */
     public static Scene gameOverScene;
+    /**
+     * The win scene.
+     */
     public static Scene winScene;
+    /**
+     * The combat loader.
+     */
     static FXMLLoader combatLoader;
+    /**
+     *  The map loader.
+     */
     static FXMLLoader mapLoader;
-
-    public static void main(String[] args) {
+    /**
+     * The main method.
+     * @param args n/a
+     */
+    public static void main(final String[] args) {
         launch(args);
     }
 
+    /**
+     * The start method.
+     * @param primaryStage the primary stage
+     */
     @Override
-    public void start(Stage primaryStage) {
+    public void start(final Stage primaryStage) {
         mainStage = primaryStage;
         mainStage.setResizable(false);
         mainStage.setTitle("Graphical RPG");
@@ -51,9 +79,9 @@ public class Main extends Application {
         CombatSceneController.setCombat(combat);
 
         // Load the FXML files for the map scene and combat scene
-        FXMLLoader startLoader = null;
-        FXMLLoader gameOverLoader = null;
-        FXMLLoader winLoader = null;
+        FXMLLoader startLoader;
+        FXMLLoader gameOverLoader;
+        FXMLLoader winLoader;
         try {
             startLoader = new FXMLLoader(getClass().getResource("Start.fxml"));
             mapLoader = new FXMLLoader(getClass().getResource("Map.fxml"));
@@ -100,22 +128,14 @@ public class Main extends Application {
 
         mapScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent event) {
+            public void handle(final KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:
-                        player.moveUp();
-                        break;
-                    case DOWN:
-                        player.moveDown();
-                        break;
-                    case LEFT:
-                        player.moveLeft();
-                        break;
-                    case RIGHT:
-                        player.moveRight();
-                        break;
-                    default:
-                        break;
+                    case UP -> player.moveUp();
+                    case DOWN -> player.moveDown();
+                    case LEFT -> player.moveLeft();
+                    case RIGHT -> player.moveRight();
+                    default -> {
+                    }
                 }
                 controller.updatePlayerSpritePosition();
                 controller.checkCombatTrigger();
@@ -125,7 +145,11 @@ public class Main extends Application {
         });
     }
 
-    public static void switchScene(Scene scene) {
+    /**
+     * Switches the scene.
+     * @param scene the scene to switch to
+     */
+    public static void switchScene(final Scene scene) {
         try {
             mainStage.setScene(scene);
             mainStage.show();
@@ -134,13 +158,19 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Gets the main stage.
+     * @return the main stage
+     */
     public static Stage getMainStage() {
         return mainStage;
     }
 
-    public static void setPlayer() throws IOException {
-        Player newPlayer = new Player("Player");
-        Main.player = newPlayer;
+    /**
+     * Sets the player.
+     */
+    public static void setPlayer() {
+        Main.player = new Player("Player");
         MapSceneController controller = mapLoader.getController();
         controller.setPlayer();
         controller.updatePlayerSpritePosition();
@@ -149,7 +179,11 @@ public class Main extends Application {
         CombatSceneController.setCombat(combat);
     }
 
-    public static void loadPlayer(Player lPlayer) {
+    /**
+     * Loads the player.
+     * @param lPlayer the player to load
+     */
+    public static void loadPlayer(final Player lPlayer) {
         Main.player = lPlayer;
         MapSceneController controller = mapLoader.getController();
         controller.setPlayer();
@@ -161,7 +195,4 @@ public class Main extends Application {
         System.out.println("Switching Scenes");
         Main.switchScene(Main.mapScene);
     }
-
-
-
 }
