@@ -31,7 +31,7 @@ public class Combat {
     /**
      * Enemy attacks the player.
      */
-    public void enemyATK ( ) {
+    public void enemyATK() {
         if (enemy != null && player != null) {
             player.receiveDMG(enemy.attack());
             System.out.println("player: " + player.getCurrHP());
@@ -42,7 +42,7 @@ public class Combat {
      * Check if the enemy has been defeated.
      * @return true if the enemy health goes below zero
      */
-    public boolean checkEnemyStatus ( ) {
+    public boolean checkEnemyStatus() {
         if (!(enemy.getCurrHP() > 0)) {
             if (enemy.getClass().equals(Boss.class)) {
                 player.setWin(true);

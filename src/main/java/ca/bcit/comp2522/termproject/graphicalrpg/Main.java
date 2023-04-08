@@ -15,13 +15,17 @@ import java.io.IOException;
  */
 public class Main extends Application {
     /**
+     * The combat loader.
+     */
+    static FXMLLoader combatLoader;
+    /**
+     *  The map loader.
+     */
+    static FXMLLoader mapLoader;
+    /**
      * The player.
      */
     public static Player player;
-    /**
-     * The main stage.
-     */
-    private static Stage mainStage;
     /**
      * The start scene.
      */
@@ -43,13 +47,9 @@ public class Main extends Application {
      */
     public static Scene winScene;
     /**
-     * The combat loader.
+     * The main stage.
      */
-    static FXMLLoader combatLoader;
-    /**
-     *  The map loader.
-     */
-    static FXMLLoader mapLoader;
+    private static Stage mainStage;
     /**
      * The main method.
      * @param args n/a

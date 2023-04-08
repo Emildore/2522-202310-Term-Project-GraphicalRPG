@@ -61,7 +61,7 @@ public class CombatSceneController implements Initializable {
      * Sets combat.
      * @param nCombat the combat
      */
-    static public void setCombat(final Combat nCombat) {
+    public static void setCombat(final Combat nCombat) {
         combat = nCombat;
     }
 
