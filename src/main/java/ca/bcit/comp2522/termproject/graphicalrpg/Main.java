@@ -1,10 +1,8 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.scene.Parent;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import java.io.IOException;
@@ -126,22 +124,19 @@ public class Main extends Application {
         MapSceneController controller = mapLoader.getController();
 
 
-        mapScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(final KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP -> player.moveUp();
-                    case DOWN -> player.moveDown();
-                    case LEFT -> player.moveLeft();
-                    case RIGHT -> player.moveRight();
-                    default -> {
-                    }
+        mapScene.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case UP -> player.moveUp();
+                case DOWN -> player.moveDown();
+                case LEFT -> player.moveLeft();
+                case RIGHT -> player.moveRight();
+                default -> {
                 }
-                controller.updatePlayerSpritePosition();
-                controller.checkCombatTrigger();
-                CombatSceneController cControl = combatLoader.getController();
-                cControl.setButtons();
             }
+            controller.updatePlayerSpritePosition();
+            controller.checkCombatTrigger();
+            CombatSceneController cControl = combatLoader.getController();
+            cControl.setButtons();
         });
     }
 
