@@ -30,10 +30,6 @@ public abstract class Entity implements Serializable {
      */
     private float currHP;
     /**
-     * The base ATK of the entity.
-     */
-    private final float baseATK;
-    /**
      * The current ATK of the entity.
      */
     private float currATK;
@@ -54,8 +50,7 @@ public abstract class Entity implements Serializable {
         name = nName;
         baseHP = 100;
         currHP = baseHP;
-        baseATK = 10;
-        currATK = baseATK;
+        currATK = (float) 10;
         posX = 0;
         posY = 0;
         enemyWins = 0;
