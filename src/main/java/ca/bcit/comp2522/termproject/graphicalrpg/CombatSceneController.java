@@ -1,12 +1,10 @@
 package ca.bcit.comp2522.termproject.graphicalrpg;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -78,11 +76,8 @@ public class CombatSceneController implements Initializable {
 
     /**
      * Player attack interaction.
-     * @param e the action event
-     * @throws InterruptedException the interrupted exception
-     * @throws IOException the io exception
      */
-    public void atkBut(final ActionEvent e) throws InterruptedException, IOException {
+    public void atkBut() {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("1", combat.getEnemy());
             combatOutcome();
@@ -91,10 +86,8 @@ public class CombatSceneController implements Initializable {
 
     /**
      * Player power strike interaction.
-     * @param e the action event
-     * @throws IOException the io exception
      */
-    public void powerBut(final ActionEvent e) throws IOException {
+    public void powerBut() {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("2", combat.getEnemy());
             combatOutcome();
@@ -103,10 +96,8 @@ public class CombatSceneController implements Initializable {
 
     /**
      * Player block interaction.
-     * @param e the action event
-     * @throws IOException the io exception
      */
-    public void blockBut(final ActionEvent e) throws IOException {
+    public void blockBut() {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("3", combat.getEnemy());
             combatOutcome();
@@ -115,10 +106,8 @@ public class CombatSceneController implements Initializable {
 
     /**
      * Player recover interaction.
-     * @param e the action event
-     * @throws IOException the io exception
      */
-    public void recoverBut(final ActionEvent e) throws IOException {
+    public void recoverBut() {
         if (combat.getEnemy() != null && combat.getPlayer() != null) {
             combat.getPlayer().interact("4", combat.getEnemy());
             combatOutcome();
@@ -127,9 +116,8 @@ public class CombatSceneController implements Initializable {
 
     /**
      * Combat outcome.
-     * @throws IOException the io exception
      */
-    private void combatOutcome() throws IOException {
+    private void combatOutcome() {
         updateEnemyHealthBar();
         if (combat.checkEnemyStatus()) {
             combat.getPlayer().resetHP();
